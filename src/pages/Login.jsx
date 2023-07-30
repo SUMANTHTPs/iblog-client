@@ -31,17 +31,19 @@ const Login = () => {
         ";path=/";
       document.cookie = cookieValue;
     };
+
     if (response.ok) {
       const data = await response.json();
-      console.log(`Cookie ` + response.cookie);
-      console.log("Token:", response.authToken);
+      console.log("Cookie: " + response.cookie);
+      console.log("Token:", data.authToken);
 
-      setCookie("authToken", response.authhToken, 7);
+      setCookie("authToken", data.authToken, 7);
       navigate("/");
     } else {
       alert("Wrong credentials");
     }
   };
+
 
   return (
     <div>
