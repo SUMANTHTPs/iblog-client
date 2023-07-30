@@ -16,6 +16,7 @@ const Login = () => {
         body: JSON.stringify({ email, password }),
         headers: { "Content-Type": "application/json" },
         credentials: "include",
+        mode: "same-origin",
       }
     );
 
@@ -43,7 +44,6 @@ const Login = () => {
       alert("Wrong credentials");
     }
   };
-
 
   return (
     <div>
