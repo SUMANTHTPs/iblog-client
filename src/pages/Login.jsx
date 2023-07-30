@@ -19,12 +19,24 @@ const Login = () => {
       }
     );
 
-    
+    const setCookie = (name, value, daysToExpire) => {
+      const expirationDate = new Date();
+      expirationDate.setDate(expirationDate.getDate() + daysToExpire);
+      const cookieValue =
+        encodeURIComponent(name) +
+        "=" +
+        encodeURIComponent(value) +
+        ";expires=" +
+        expirationDate.toUTCString() +
+        ";path=/";
+      document.cookie = cookieValue;
+    };
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
-      console.log(response.cookie);
-      console.log("Token:", data.token);
+      console.log(`Cookie ` + response.cookie);
+      console.log("Token:", response.authToken);
+
+      setCookie("authToken", response.authhToken, 7);
       navigate("/");
     } else {
       alert("Wrong credentials");
