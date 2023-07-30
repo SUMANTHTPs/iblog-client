@@ -13,7 +13,6 @@ const Navbar = () => {
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Credentials": true,
       },
     }).then((response) => {
       response.json().then((userInfo) => {
